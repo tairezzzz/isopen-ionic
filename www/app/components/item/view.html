@@ -1,0 +1,78 @@
+<div class="grid-container itemview">
+    <div class="itemview-stream-item-pic">
+        <div ng-if="showHearts" class="rowfree">
+            <div class="heartoverimage2 heart-reveal-large"></div>
+        </div>
+        <ul style = "height:{{sliderImageHeight}}px;" rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-controls
+            rn-carousel-index="carouselIndex" class="my-slider">
+            <li ng-repeat="image in item.images">
+                <div toggleimageheight carind="{{carouselIndex}}" ng-if="image.image_url" class = "resizable-image" ng-style="{'background-image': 'url(' + image.image_url + ')'};">
+                    <img ng-src="{{image.image_url}}" style="visibility:hidden" width="310"/>
+                </div>
+            </li>
+        </ul>
+        <div rn-carousel-indicators ng-if="item.images.length > 1" slides="item.images" rn-carousel-index="carouselIndex"></div>
+    </div>
+
+    <div class="item-attrs-wrapper">
+        <p id="heart-position"><span class="heart-small" ng-class="isActiveTab ? 'center' : 'left'" style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><b
+                class="price-text">454 </b>
+        </p>
+
+        <p id="location-position"><span class="location-small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <b class="price-text">In-store </b>
+        </p>
+
+        <p id="price-position"><span class="buy-small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <b class="price-text">${{item.price|itemPrice}}</b>
+        </p>
+    </div>
+
+    <div ng-controller="ItemViewTabsCtrl">
+        <div ng-if="!isSeller" class="itemview-icon-cirle-wapper">
+            <div class="action-icon"
+                 ng-click="onClickTab({title: 'One', url: 'app/components/item/view-tab-comment.html'})">
+                <div class="buyer-message-circle"
+                     ng-class="isActiveTab('app/components/item/view-tab-comment.html') ? 'active' : ''"></div>
+            </div>
+            <div class="action-icon"
+                 ng-click="onClickTab({title: 'Two', url: 'app/components/item/view-tab-buy.html'})">
+                <div class="buy-circle"
+                     ng-class="isActiveTab('app/components/item/view-tab-buy.html') ? 'active' : ''"></div>
+            </div>
+            <div class="action-icon" ng-click="likeItem()">
+                <div class="heart-circle"></div>
+            </div>
+            <div class="action-icon"
+                 ng-click="onClickTab({title: 'Four', url: 'app/components/item/view-tab-location.html'})">
+                <div class="location-circle"
+                     ng-class="isActiveTab('app/components/item/view-tab-location.html') ? 'active' : ''"></div>
+            </div>
+        </div>
+        <div ng-if="isSeller" class="itemview-icon-cirle-wapper">
+            <div class="action-icon"
+                 ng-click="onClickTab({title: 'One', url: 'app/components/item/view-tab-comment.html'})">
+                <div class="message-circle"
+                     ng-class="isActiveTab('app/components/item/view-tab-comment.html') ? 'active' : ''"></div>
+            </div>
+            <div class="action-icon"
+                 ng-click="onClickTab({title: 'Two', url: 'app/components/item/view-tab-log.html'})">
+                <div class="buy-circle"
+                     ng-class="isActiveTab('app/components/item/view-tab-log.html') ? 'active' : ''"></div>
+            </div>
+            <div class="action-icon"
+                 ng-click="onClickTab({title: 'Three', url: 'app/components/item/view-tab-social.html'})">
+                <div class="promote-circle"
+                     ng-class="isActiveTab('app/components/item/view-tab-social.html') ? 'active' : ''"></div>
+            </div>
+            <div class="action-icon"
+                 ng-click="onClickTab({title: 'Four', url: 'app/components/item/view-tab-edit.html'})">
+                <div class="edit-circle"
+                     ng-class="isActiveTab('app/components/item/view-tab-edit.html') ? 'active' : ''"></div>
+            </div>
+        </div>
+        <div id="mainView" style="clear:both;">
+            <div class="am-fade-and-slide-top" ng-include="currentTab"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div ng-if = "showPanel" ng-include="'app/components/item/newstore-panel.html'"></div>
+<div class="grid-container itemfeed">
+    <div ng-repeat="item in items track by $index" class="item-container">
+        <div class="stream-item-pic">
+            <div class="x-profile" ng-if="isSeller" ng-click="toggleItemStatus(item)"></div>
+            <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:1})" id="item-large-pic"
+                 ng-style="{'background-image': 'url(' + item.images[0].image_url + ')', 'opacity':item.status==10?0.3:1}">
+            </div>
+            <div ng-style="{'opacity':item.status==10?0.3:1}">
+                <p id="heart-position"><span class="heart-small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <b class="price-text">454</b>
+                </p>
+
+                <p id="location-position">
+                    <span class="location-small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <b class="price-text">In-store</b>
+                </p>
+
+                <p id="price-position"><span class="buy-small" style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <b class="price-text">${{item.price|itemPrice}}</b>
+                </p>
+
+
+                <div id="icon-cirle-wapper"
+                     style="margin-bottom: 10px; padding: 1px;">
+                    <div ng-if="!isSeller">
+                        <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:1})"
+                             class="action-icon active">
+                            <div class="buyer-message-circle active"></div>
+                        </div>
+                        <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:2})"
+                             class="action-icon">
+                            <div class="buy-circle"></div>
+                        </div>
+                        <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:3})"
+                             class="action-icon">
+                            <div class="heart-circle"></div>
+                        </div>
+                        <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:4})"
+                             class="action-icon">
+                            <div class="location-circle"></div>
+                        </div>
+                    </div>
+                    <div ng-if="isSeller">
+                        <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:1})"
+                             class="action-icon">
+                            <div class="message-circle active"></div>
+                        </div>
+                        <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:2})"
+                             class="action-icon">
+                            <div class="buy-circle"></div>
+                        </div>
+                        <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:3})"
+                             class="action-icon">
+                            <div class="promote-circle"></div>
+                        </div>
+                        <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:4})"
+                             class="action-icon">
+                            <div class="edit-circle"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="comment">
+                    <tr>
+                        <td class="icon-message">
+                            <span class="description-small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                        <td>
+                            <p>
+                                {{item.description | itemDescription}}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="comment in item.comments | limitTo:2">
+                        <td class="icon-message">
+                            <span ng-class="item.userFullName==comment.authorFullName?'seller-message-small':'buyer-message-small'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        </td>
+                        <td>
+                            <p>
+                                <b ng-class="item.userFullName==comment.authorFullName?'seller-name-text':'buyer-name-text'"><a
+                                        ui-sref="store({storeurl:comment.storeUrl})">{{item.userFullName!==comment.authorFullName?comment.authorFullName:''}}</a></b>
+                                {{comment.content}}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="leavecomment" style=" margin: 10px 0 10px 10px; ">
+                    <a style="color: #4c87f1; text-decoration: none !important;"
+                       ng-click="leavecomment({storeurl:store.store_url,itemurl:item.item_url, tab:1})">Leave
+                        comment</a>
+                </div>
+
+                <div class="seemorecontainer" ng-if="item.comments.length>2"
+                     ng-click="seemore({storeurl:store.store_url,itemurl:item.item_url, tab:1})">
+                    <div class="seemore" style=" margin: -28px 8px 4px -10px; text-align: right;">
+                        <span>See more...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

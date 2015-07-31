@@ -1,0 +1,202 @@
+<div class="popup-outer">
+    <div class="middle">
+        <div class="inner popup-inner profile-store">
+            <div ui-sref="grid" class="x-profile"></div>
+            <ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-index="carouselIndex"
+                class="safearea popup-safearea ng-cloak">
+                <li>
+                    <center class="page1">
+                        <div class="setting-titles">
+                            <f3>Open a free store</f3>
+                        </div>
+                        <h6 style="margin:5px 20px 10px 20px;">
+                            Facebook page admins can link their stores Facebook pages
+                        </h6>
+
+                        <div style="width: 240px;">
+                            <select class="selector1" style="margin: 0 0 10px -1px;">
+                                <option value="">Stores Facebook page</option>
+                            </select>
+                        </div>
+                        <input class="regular-feild" type="text" ng-model="profile.store.store_name"
+                               placeholder="Store name"/>
+                        <input class="regular-feild" type="text" ng-model="profile.store.description"
+                               placeholder="Store description. Two lines."/>
+                        <input class="regular-feild" type="text" ng-model="profile.store.specialities"
+                               placeholder="Store specialities. Three lines."/>
+
+                        <div style="width: 240px; margin: 6px 0 0px 0;">
+                            <select class="selector1" style="margin: 0 0 10px -1px;">
+                                <option value="">Store Category</option>
+                            </select>
+                        </div>
+                    </center>
+                </li>
+                <li>
+                    <center class="page2">
+                        <div class="setting-titles">
+                            <f3>Store details</f3>
+                        </div>
+                        <div class="enter-storeaddress">
+
+                            <h6>Fill out your store address if you want to change it. Your current address:
+                                {{profile.store.address}}</h6>
+
+                            <div ng-include="renderMap&&carouselIndex==1 ? 'app/components/profile/g-autocomplete.html' : null"></div>
+
+                        </div>
+                        <h6 style="margin:0 20px 0 20px;">Start trading now. Mobbbi holds your balance until
+                            your ready to cash out with PayPal. </h6>
+
+                        <div style="display:inline-block; width: 240px; margin: 10px 0 0 0;">
+                            <div style="float: left; margin: 0px 0px 0px 0px;">
+                                <input id="textfield6" type="text" ng-model="profile.store.billing_email"
+                                       placeholder="PayPal email"/>
+                            </div>
+                            <div style=" margin: 8px 0 10px 0; float: right;"><a href="#" class="btn sml">Cash
+                                out&nbsp;</a>
+                            </div>
+                        </div>
+                    </center>
+                </li>
+                <li>
+                    <center class="page3">
+                        <div class="setting-titles">
+                            <f3>Image Store</f3>
+                        </div>
+                        <h6 style="margin: 5px 25px 5px 20px;">Upload a full-length background picture of yourself
+                            in your store as your background image. Then crop your head to make your profile.</h6>
+
+                        <div ng-controller="CropUploadCtrl">
+                            <input type="file" id="fileInput" class="custom-file-input"/>
+
+                            <div class="btn sml" ng-click="uploadCrop()">Crop</div>
+                            <div class="cropArea">
+                                <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+                            </div>
+
+                        </div>
+                    </center>
+                </li>
+                <li>
+                    <center class="page4">
+                        <div class="setting-titles">
+                            <f3>Import items</f3>
+                        </div>
+                        <h6 style="margin: 10px 0 0 53px;float: left">Add items via the</h6>
+
+                        <div style="float:left;margin-top:2px;margin-left:10px;margin-right:10px;"
+                             class="additem"></div>
+                        <h6 style="float: left;margin-top:10px;"> button</h6>
+
+                        <div ng-if="!profile.instagramId" style="display:inline-block;width:240px;margin:15px 0 0 0;">
+                            <div style="float: left; margin: 5px 0 0 0;">
+                                <h6>Link Instagram account</h6>
+                            </div>
+                            <div style="margin:4px 0 5px 0;float:right;">
+                                <a class="btn sml"
+                                   ng-click="linkInstagram()">
+                                    &nbsp;Link&nbsp;</a>
+                            </div>
+                        </div>
+                        <div ng-if="profile.instagramId" style="display:inline-block;width:240px;margin:15px 0 0 0;">
+                            <div style="float: left; margin: 5px 0 0 0;">
+                                <h6>Instagram items</h6>
+                            </div>
+                            <div style=" margin: 4px 0 5px 0; float: right;">
+                                <a ui-sref="instaimport({storeurl:mainStoreUrl})"
+                                   class="btn sml">
+                                    &nbsp;Import&nbsp;</a>
+                            </div>
+                        </div>
+                        <h6 style="margin:0 20px;">Select items previously posted on Instagram. Make edits on the
+                            item pages once imported.</h6>
+
+                        <div style="width: 220px; margin: 10px 0 0 0;">
+                            <div style=" margin: 8px 0 0 0; float: left;">
+                                <p>Instagram Posting</p>
+                            </div>
+                            <div style="float: right;">
+                                <label class="switch-light switch" onclick="">
+                                    <input type="checkbox">
+                                    <span>
+									<span>On</span>
+                                    <span>Off</span>
+                                    </span>
+                                    <a></a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <h6 style="margin:55px 20px 0 0;clear: both;">Link to be applied on item images</h6>
+
+                        <div style=" width: 240px; margin: 15px 0 20px 0;">
+                            <h4>http://storename.url</h4>
+                        </div>
+                    </center>
+                </li>
+                <li>
+                    <center>
+                        <div id="content">
+                            <div class="setting-titles">
+                                <f3>Promote store</f3>
+                            </div>
+                            <div style="width: 220px; margin: 5px 0 0 0;">
+                                <div style=" margin: 8px 0 0 0; float: left;">
+                                    <p>Facebook Posting</p>
+                                </div>
+                                <div style="float: right;">
+                                    <label class="switch-light switch" onclick="">
+                                        <input type="checkbox">
+                                    <span>
+									<span>On</span>
+                                    <span>Off</span>
+                                    </span>
+                                        <a></a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div style="display:inline-block;width:240px;margin:15px 0 0 0;">
+                                <div style="float:left;margin: 5px 0 0 0;">
+                                    <h6>Send Gmail invite</h6>
+                                </div>
+                                <div style="margin: 4px 0 10px 0;float: right;">
+                                    <a class="btn sml">&nbsp;Now&nbsp;</a>
+                                </div>
+                            </div>
+                            <div style="display:inline-block;width:240px;">
+                                <div style="float: left; margin: 5px 0 0 0;">
+                                    <h6>Text contacts</h6>
+                                </div>
+                                <div style="margin: 4px 0 10px 0; float: right;">
+                                    <a class="btn sml">&nbsp;Now&nbsp;</a>
+                                </div>
+                            </div>
+                            <div style="display:inline-block;width:240px;">
+                                <div style="float: left; margin: 5px 0 0 0;">
+                                    <h6>eBay posting</h6>
+                                </div>
+                                <div style=" margin: 4px 0 10px 0; float: right;">
+                                    <a class="btn sml">&nbsp;Now&nbsp;</a>
+                                </div>
+                            </div>
+                            <h6 style="margin:0 20px 0 0;clear: both;">Paste a link to your store</h6>
+
+                            <div style="width: 240px;margin:10px 10px 0 0;">
+                                <div class="url-text" style="margin:0 0 0 0;">
+                                    <h4>http://storename.url</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                </li>
+            </ul>
+
+            <div class="done-btn-ctn">
+                <div class="btn sml" ng-click="save()">&nbsp;Done&nbsp;</div>
+            </div>
+            <div rn-carousel-indicators ng-if="slides.length > 1" slides="slides"
+                 rn-carousel-index="carouselIndex"></div>
+        </div>
+    </div>
+</div>

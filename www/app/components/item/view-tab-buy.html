@@ -1,0 +1,20 @@
+<div class="rowfree">
+    <div class="reveal2 item-transaction-section">
+        <a ng-if="item.price" ng-click="showConfirm = !showConfirm" class="btn btn-buy btn-post centered">&nbsp;Buy Item ${{item.price}}&nbsp;</a>
+
+        <div ng-if="showConfirm">
+            <h6 style="margin:0 20px 0 20px;">Purchasing with credit card ending <strong>** 4567</strong> and shipped to
+                your address <strong>418 W Ave 42, LA, CA 90065</strong></h6>
+            <a class="btn btn-buy btn-post centered">&nbsp;Confirm&nbsp;</a>
+        </div>
+        <table class="prev-customers">
+            <tr>
+                <td><h6>Previous customers</h6></td>
+            </tr>
+            <tr>
+                <td><a><img class="buyer-profile-transaction" src="../assets/images/background2circle290x290px.jpg"></a>
+                    <a><img class="buyer-profile-transaction" src="../assets/images/background3circle290x290px.jpg"></a></td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="account-outer">
+    <div class="middle">
+        <div class="inner">
+            <div ng-if="seller" class="copyurl-container">
+                <div device-detector class="ngclip">
+                    <input ng-disabled="true" class="regular-field" type="text" ng-model="storeUrl"
+                           placeholder="Store URL">
+                    <button class="btn" clip-copy="getTextToCopy()" clip-click="alertCopy()"
+                            clip-click-fallback="fallback(copy)">Copy!
+                    </button>
+                </div>
+                <div device-detector class="url-text">
+                    <h4>{{storeUrl}}</h4>
+                </div>
+                <!--Don't remove this block-->
+                <div class="url-text" style=" margin: 10px 0 20px 0;visibility: hidden;">
+                    <h4>mobbbi.com/mystorename</h4>
+                </div>
+                <!--Don't remove this block-->
+            </div>
+            <div id="item-circles">
+                <ul>
+                    <li ng-repeat="item in store.items| limitTo:3">
+                        <a ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:1})">
+                            <div class="item-circle-1" style="background-image:url({{item.images[0].image_url}})"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="text-container">
+    <h3>{{store.description}}</h3>
+    <h5>{{store.specialities}}</h5>
+</div>

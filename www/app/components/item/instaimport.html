@@ -1,0 +1,16 @@
+<div class="grid-container instaimport itemgrid grid s-grid s-grid--divide-3 m-grid--divide-4 l-grid--divide-7">
+    <div class="control-panel">
+        <div class="btn sml" ng-click="importItems()">Import</div>
+        <div class="btn sml" ng-click="checkAll()">Check All</div>
+        <div class="btn sml" ng-click="uncheckAll()">Uncheck All</div>
+    </div>
+    <div ng-repeat="item in items track by $index" class="grid_unit">
+        <div ng-click="item.isChecked = !item.isChecked" class="item-preview-small-grid">
+            <div ng-if="item.isChecked" class="round-checkmark"></div>
+            <div ng-class="item.status|itemStatus">
+                <div style="background-image:url({{item.images.thumbnail.url}});"
+                     class="grid-image"></div>
+            </div>
+        </div>
+    </div>
+</div>

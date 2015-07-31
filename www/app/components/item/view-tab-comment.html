@@ -1,0 +1,55 @@
+<div class="rowfree tab-comment">
+    <div class="reveal1 item-transaction-section unhidden">
+        <table class="comment">
+            <tr>
+                <td class="icon-message">
+                    <span class="description-small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                <td>
+                    <p>{{item.description|itemDescription}}</p>
+                </td>
+            </tr>
+            <tr ng-if='!seeMore' ng-repeat="comment in item.comments | limitTo:2">
+                <td class="icon-message">
+                    <span ng-class="item.userFullName==comment.authorFullName?'seller-message-small':'buyer-message-small'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </td>
+                <td>
+                    <p ui-sref = "store({storeurl:comment.storeUrl})">
+                        <b ng-class="item.userFullName==comment.authorFullName?'seller-name-text':'buyer-name-text'">{{item.userFullName!==comment.authorFullName?comment.authorFullName:''}}</b>
+                        {{comment.content}}
+                    </p>
+                </td>
+            </tr>
+            <tr ng-if='seeMore' ng-repeat="comment in item.comments">
+                <td class="icon-message">
+                    <span ng-class="item.userFullName==comment.authorFullName?'seller-message-small':'buyer-message-small'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </td>
+                <td>
+                    <p>
+                        <b ng-class="item.userFullName==comment.authorFullName?'seller-name-text':'buyer-name-text'">{{item.userFullName!==comment.authorFullName?comment.authorFullName:''}}</b>
+                        {{comment.content}}
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <div class="seemore-leavecomment-container" style="margin: 5px 0 {{item.comments.length<3?'20px':'0'}} 10px;">
+            <div class="leavecomment">
+                <a style="color: #4c87f1; text-decoration: none !important;" ng-click="showCommentTabGoToBottom()">Leave
+                    comment</a>
+            </div>
+            <div class="seemorecontainer">
+                <div class="seemore" style=" margin: -16px 0 0 0; text-align: right;">
+                <span ng-show="item.comments.length>2"
+                      ng-click="seeMore = !seeMore">See {{seeMore?' less':' more'}}...</span>
+                </div>
+            </div>
+        </div>
+        <div ng-class="item.comments.length==0?'mtop':''" class="leavecomment-container">
+            <div ng-show="leaveComment">
+                <input ng-model="item.newComment">
+
+                <div class="but sml" ng-click="saveComment(item.newComment)">Post</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="bottom"></div>

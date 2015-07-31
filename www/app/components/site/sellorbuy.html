@@ -1,0 +1,43 @@
+<div ng-controller="SiteHeader" id="container1-itemview">
+    <div ng-if="sellerAllowed" id="navigation1">
+        <ul>
+            <li>
+                <a style="width:82%;height:38px"></a>
+            </li>
+            <li>
+                <a ng-click="goAsBuyer()">
+                    <div class="store"></div>
+                    <h4></h4>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="outer-top sellorbuy">
+    <div class="middle">
+        <div class="inner">
+            <br>
+            <br>
+            <img src="assets/images/mobbbi.png" width="140">
+            <br>
+
+            <h3>Welcome {{facebookProfile.first_name}} {{facebookProfile.last_name}}</h3>
+
+            <div>
+                <img ui-sref="profile" class="profile"
+                     ng-src="http://graph.facebook.com/{{facebookProfile.id}}/picture?type=large">
+            </div>
+
+            <p style="margin: 5px 10px 20px 10px;float:left;">Enter {{sellerAllowed?'as store owner or':'using'}}
+                store-icon to view your store as
+                customer </p>
+
+            <div ng-if="sellerAllowed" style="display: inline-block; width: 240px; margin: 0 10px 10px 10px;">
+                <a ng-click="goAsSeller()" class="btn enter-button">&nbsp;Enter&nbsp;</a>
+            </div>
+            <div ng-if="!sellerAllowed" style="display: inline-block; width: 240px; margin: 0 10px 10px 10px;">
+                <a ng-click="goAsBuyer()" class="btn enter-button">&nbsp;Enter&nbsp;</a>
+            </div>
+        </div>
+    </div>
+</div>

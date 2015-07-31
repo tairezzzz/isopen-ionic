@@ -1,0 +1,74 @@
+<div class="rowfree">
+    <div class="reveal6 item-transaction-section">
+        <center>
+            <div id="content-popup">
+                <div style="margin: 15px 0px 20px 0px;"><a href="#" class="btn sml delete" ng-click="removeItem()">
+                    &nbsp;Delete item&nbsp;</a>
+                </div>
+                <div style="width:240px;display: inline-block;margin-bottom: 10px">
+                    <div class="btn sml hidden-desktop"
+                         device-detector
+                         pl-upload
+                         pl-progress-model="percent"
+                         pl-auto-upload="true"
+                         pl-files-model="plupfiles"
+                         pl-multi-params-model="pluploadConfig.multiParams"
+                         pl-url="{{pluploadConfig.uploadPath}}"
+                         on-file-uploaded="uploaded($response)"
+                         on-file-added="added()"
+                         on-file-progress="progress()"
+                         pl-multi-selection="false"
+                         pl-resize-model="pluploadConfig.resize">Photo
+                    </div>
+                    <div class="btn sml" pl-upload
+                         pl-progress-model="percent"
+                         pl-auto-upload="true"
+                         pl-files-model="plupfiles"
+                         pl-multi-params-model="pluploadConfig.multiParams"
+                         pl-url="{{pluploadConfig.uploadPath}}"
+                         on-file-uploaded="uploaded($response)"
+                         on-file-added="added()"
+                         on-file-progress="progress()"
+                         pl-multi-selection="true"
+                         pl-resize-model="pluploadConfig.resize">Multiple
+                    </div>
+                </div>
+                <div class="upload-pic-previews-wrapper">
+                    <div class="upload-pic-previews" ng-repeat="thumb in item.images">
+                        <img width="44" height="70" ng-src="{{thumb.image_url}}"/>
+                        <span class="x-but" ng-click="removeImage(thumb)">X</span>
+                    </div>
+                </div>
+                <input style="width:210px;" class="regular-feild" ng-model="item.title" placeholder="title"/>
+
+                <div style="margin: 5px 0px 0px 0px;">
+                        <textarea ng-model="item.description" class="input item-desicription-input"
+                                  placeholder="Item description"></textarea>
+                </div>
+
+                <div style="display:inline-block;width:220px;margin:0 0;">
+                    <div style="float: left; margin: 0px 0px 0px 0px;"><input ng-model="item.price" id="textfield8"
+                                                                              type="number" placeholder="Price:">
+                    </div>
+
+                    <div style="float: left; margin: 0px 0px 0px 10px;"><input ng-model="item.size" id="textfield3"
+                                                                               type="text" placeholder="Size"></div>
+
+                    <div style="float: left; margin: 0px 0px 0px 10px;"><input ng-model="item.quantity" id="textfield3"
+                                                                               type="number" placeholder="#"></div>
+
+                </div>
+
+                <div style="width: 100%; margin: 6px 0 0px 0;">
+                    <select class="selector1" style="margin: -2px 0 20px 0; width: 220px;">
+                        <option value="">Store pick up</option>
+                    </select>
+                </div>
+
+                <div style="margin: 10px 0px 20px 0px;"><a ng-click="save()" class="btn sml">&nbsp;Post
+                    changes&nbsp;</a>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>

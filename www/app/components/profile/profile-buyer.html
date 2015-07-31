@@ -1,0 +1,69 @@
+<div class="inner popup-inner">
+    <div class="x-profile" ng-click="goBack()"></div>
+    <ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-index="carouselIndex"
+        class="safearea popup-safearea ng-cloak">
+        <li>
+            <center>
+                <div class="setting-titles" style="margin: 20px 0 0 0;">
+                    <f3>User details</f3>
+                </div>
+                <div ng-if="profile.seller" style="display: inline-block; width: 220px; margin: 5px 0 0 0;">
+                    <div style="margin: 8px 0 0 0; float: left;">
+                        <p>Use Facebook info</p>
+                    </div>
+                    <div style="float: right;">
+                        <label class="switch-light switch">
+                            <input type="checkbox" ng-model="isFacebookOff" ng-checked="isFacebookOff"
+                                   ng-change="toggleFacebookProfile()">
+                                    <span>
+									<span>On</span>
+                                    <span>Off</span>
+                                    </span>
+                            <a></a>
+                        </label>
+                    </div>
+                </div>
+                <div class="profile-img"
+                     style="background-image:url({{store.avatar_url|storeAvatar}}); margin-bottom: 20px; margin-top: 20px; "></div>
+                <input class="regular-feild" disabled=true type="text" ng-model="::fullName"
+                       placeholder="Full name"/>
+                <input class="regular-feild" ng-model="profile.phone" placeholder="Mobile number"/>
+            </center>
+        </li>
+        <li>
+            <center>
+                <div class="setting-titles" style=" margin: 20px 0 -10px 0;">
+                    <f3>Apply to open store</f3>
+                </div>
+
+                <h6 style="margin: 20px;">Email us and tell us about your store.
+                    We will then see if you are qualify for a free early adapter account</h6>
+
+
+                <input disabled class="regular-field" style="width:214px;" type="text" ng-model="facebookLink"
+                       placeholder="Store Facebook page url"/>
+
+                <div style=" margin: 4px 0 10px 0;">
+                    <div class="btn">&nbsp;Apply now&nbsp;</div>
+                </div>
+
+                <div style="display: inline-block; width: 240px;">
+                    <div style="float: left; margin: -4px 0px 0px 0;">
+                        <input id="textfield7" ng-model="inviteCode" type="text" placeholder="Invite code"/>
+                    </div>
+
+                    <div style=" margin: 4px 0 30px 0; float: right;">
+                        <a ng-click="makeMeSeller(inviteCode)" class="btn sml">&nbsp;Enter&nbsp;</a>
+                    </div>
+                </div>
+            </center>
+        </li>
+    </ul>
+
+    <div class="done-btn-ctn">
+        <div class="btn sml" ng-click="save()">&nbsp;Done&nbsp;</div>
+    </div>
+    <div rn-carousel-indicators ng-if="slides.length > 1" slides="slides"
+         rn-carousel-index="carouselIndex">
+    </div>
+</div>

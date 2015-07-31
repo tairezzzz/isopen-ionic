@@ -1,0 +1,18 @@
+<div ng-if = "showPanel" ng-include="'app/components/item/newstore-panel.html'"></div>
+<div ng-if = "items" class="grid-container itemgrid grid s-grid s-grid--divide-3 m-grid--divide-4 l-grid--divide-7">
+    <div ng-repeat="item in items track by $index" class="grid_unit">
+        <div class="item-preview-small-grid">
+            <div class="x-profile" ng-if="isSeller" ng-click="toggleItemStatus(item)"></div>
+
+            <div ng-class="item.status|itemStatus">
+                <div ui-sref="itemview({storeurl:store.store_url,itemurl:item.item_url,tab:1})" style="background-image:url({{item.images[0].image_url}});"
+                     class="grid-image"></div>
+                <p id="grid-heart-position"><span class="heart-small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><b
+                        class="grid-price-text">51</b></p>
+
+                <p id="grid-price-position"><span class="buy-small" style=" background-size: ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><b
+                        class="grid-price-text">${{item.price|itemPrice}}</b></p>
+            </div>
+        </div>
+    </div>
+</div>

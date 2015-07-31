@@ -1,0 +1,86 @@
+<div ng-controller="SiteHeader">
+    <div class="bar">
+        <div id="navigation1">
+            <ul>
+                <li>
+                    <a ng-click="logout()" style="height: 38px">
+                        <div class="back"></div>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="goToTop()" style="width: 70%; height: 38px">
+                        <img class="profile customheader-profile" ng-src="{{store.avatar_url|storeAvatar}}">
+                        <div class="header-title">{{store.store_name}}</div>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="profile">
+                        <div class="user"></div>
+                        <h4></h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="profile-container1">
+
+        <ul>
+            <li>
+                <a ui-sref="store({storeurl:$stateParams.storeurl})" style="width: 25%;">
+                    <img class="profile" ng-src="{{store.avatar_url|storeAvatar}}">
+                </a>
+            </li>
+            <li>
+                <div id="items-data"><span class="profile-digits">Items</span><br>
+
+                    <h3>25</h3></div>
+            </li>
+            <li>
+                <div id="follower-data"><span class="profile-digits">Followers</span><br>
+
+                    <h3>25</h3></div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="profile-container2">
+
+        <a ng-if="!isSeller" href="#" id="profile-button" class="fast-tap btn">&nbsp;Follow&nbsp;+&nbsp;</a>
+        <a ng-if="isSeller" ui-sref="store({storeurl:$stateParams.storeurl})" id="profile-button" class="fast-tap btn">&nbsp;Edit profile&nbsp;</a>
+
+    </div>
+
+
+    <div id="profile-text"><h5>{{store.description}}</h5></div>
+
+
+    <div id="container2">
+        <div id="navigation2">
+            <ul ng-if="isSeller">
+                <li><a ng-click="clickToOpen()">
+                    <div class="additem"></div>
+                </a></li>
+                <li><a ui-sref-active="menu-item-active" ui-sref="grid({storeurl:$stateParams.storeurl, mode:''})">
+                    <div class="gridstream"></div>
+                </a></li>
+                <li><a ui-sref-active="menu-item-active" ui-sref="grid({storeurl:$stateParams.storeurl, mode:'feed'})">
+                    <div class="stream"></div>
+                </a></li>
+            </ul>
+            <ul ng-if="!isSeller">
+                <li><a ui-sref-active="menu-item-active" ui-sref="grid({storeurl:$stateParams.storeurl, mode:'feed'})">
+                    <div class="stream"></div>
+                </a></li>
+                <li><a ui-sref-active="menu-item-active" ui-sref="grid({storeurl:$stateParams.storeurl, mode:''})">
+                    <div class="gridstream"></div>
+                </a></li>
+                <li><a ui-sref-active="menu-item-active" ui-sref="location({storeurl:$stateParams.storeurl})">
+                    <div class="location"></div>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</div>

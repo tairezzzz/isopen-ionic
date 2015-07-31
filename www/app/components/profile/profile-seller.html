@@ -1,0 +1,125 @@
+<div class="inner popup-inner">
+    <div class="x-profile" ng-click="goBack()"></div>
+    <ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-index="carouselIndex"
+        class="safearea popup-safearea ng-cloak">
+        <li>
+            <center>
+                <div class="setting-titles" style="margin: 20px 0 0 0;">
+                    <f3>User details</f3>
+                </div>
+                <div ng-if="profile.seller" style="display: inline-block; width: 220px; margin: 5px 0 0 0;">
+                    <div style="margin: 8px 0 0 0; float: left;">
+                        <p>Use Facebook info</p>
+                    </div>
+                    <div style="float: right;">
+                        <label class="switch-light switch">
+                            <input type="checkbox" ng-model="isFacebookOff" ng-checked="isFacebookOff"
+                                   ng-change="toggleFacebookProfile()">
+                                    <span>
+									<span>On</span>
+                                    <span>Off</span>
+                                    </span>
+                            <a></a>
+                        </label>
+                    </div>
+                </div>
+                <div class="profile-img"
+                     style="background-image:url({{store.avatar_url|storeAvatar}}); margin-top: {{!profile.seller?'20px':'0px'}}"></div>
+                <input class="regular-feild margin-top" ng-model="profile.first_name" type="text"
+                       placeholder="First name"/>
+                <input class="regular-feild" type="text" ng-model="profile.last_name"
+                       placeholder="Last name"/>
+            </center>
+        </li>
+        <li>
+            <center>
+                <div class="setting-titles" style="margin: 20px 0 0 0;">
+                    <f3>User details</f3>
+                </div>
+                <br>
+                <input class="regular-feild" ng-model="profile.email" placeholder="Email"/>
+                <input class="regular-feild" ng-model="profile.phone" placeholder="Mobile number"/>
+                <input id="inp-new-pass" class="regular-feild margin-top" type="password"
+                       placeholder="Enter a new password"/>
+
+                <div id='btn-text-verify' class="btn">&nbsp;Text me to verify&nbsp;</div>
+                <input class="regular-feild" type="password" placeholder="Enter texted code"/>
+            </center>
+        </li>
+        <li>
+            <center>
+                <div id="content">
+                    <div class="setting-titles" style=" margin: 20px 0 0 0;">
+                        <f3>Enable item purchasing</f3>
+                    </div>
+                    <input class="regular-feild margin-top" type="number" placeholder="Credit card number"/>
+
+                    <div style="inline: block;width: 240px;margin: 0px 0 0 0;">
+                        <div style="float: left;margin: 0px 0px 0px 0px;">
+                            <input id="textfield1" type="date" placeholder="00/00">
+                        </div>
+                        <div style="float: left;margin: 0px 0px 0px 10px;">
+                            <input id="textfield3" type="text" placeholder="CVV">
+                        </div>
+                        <div style=" margin: 8px 0 20px 0;float: right;"><a href="#" class="fast-tap btn sml">
+                            &nbsp;&nbsp;&nbsp;Link&nbsp;&nbsp;&nbsp;</a>
+                        </div>
+                    </div>
+
+                    <input class="regular-feild" type="text" ng-model="profile.address"
+                           placeholder="Ship to address"/>
+
+                    <div style="inline: block; width: 240px;">
+                        <div style="float: left;">
+                            <input id="textfield4" type="text" ng-model="profile.city" placeholder="City"/>
+                        </div>
+
+                        <div style="float: right; margin: 0px 0px 0px 10px;">
+                            <input id="textfield5" type="text" ng-model="profile.state" placeholder="State"/>
+                        </div>
+
+                        <div style="float: left; margin: -4px 0px 0px 0;">
+                            <input id="textfield7" type="text" ng-model="profile.zipcode"
+                                   placeholder="Zipcode"/>
+                        </div>
+
+                        <div style=" margin: 4px 0 30px 0; float: right;"><a href="#" class="btn sml">
+                            &nbsp;Verify&nbsp;</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </li>
+        <li>
+            <center>
+                <div class="setting-titles" style=" margin: 20px 0 -10px 0;">
+                    <f3>Apply to open store</f3>
+                </div>
+
+                <h6 style="margin: 20px;">Email us and tell us about your store.
+                    We will then see if you are qualify for a free early adapter account</h6>
+
+
+                <input disabled class="regular-field" style="width:214px;" type="text" ng-model="facebookLink"
+                       placeholder="Store Facebook page url"/>
+
+                <div style=" margin: 4px 0 10px 0;">
+                    <div class="btn">&nbsp;Apply now&nbsp;</div>
+                </div>
+
+                <div style="display: inline-block; width: 240px;">
+                    <div style=" margin: 4px 0 30px 0;">
+                        <a ui-sref="profilestore" class="btn sml">&nbsp;Your store profile&nbsp;</a>
+                    </div>
+                </div>
+            </center>
+        </li>
+    </ul>
+
+    <div class="done-btn-ctn">
+        <div class="btn sml" ng-click="save()">&nbsp;Done&nbsp;</div>
+    </div>
+    <div rn-carousel-indicators ng-if="slides.length > 1" slides="slides"
+         rn-carousel-index="carouselIndex">
+    </div>
+</div>

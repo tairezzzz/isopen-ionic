@@ -1,0 +1,31 @@
+<div ng-controller="SiteHeader" id="container1-itemview">
+    <div id="navigation1">
+        <ul>
+            <li>
+                <a style="width:82%;height:38px"></a>
+            </li>
+            <li>
+                <a ui-sref="profile">
+                    <div class="fast-tap user"></div>
+                    <h4></h4>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="outer-top">
+    <div class="middle">
+        <div class="inner">
+            <br>
+            <br>
+            <img src="assets/images/mobbbi.png" width="140">
+            <br>
+            <br>
+            <h3 style="margin: 20px 10px 20px 10px;">Welcome visitor</h3>
+            <br>
+            <select ng-model="inviter" ng-change="selectStore(inviter.id)" ng-options="store.store_name for store in profile.stores track by store.id" class="sml selector" style=" width: 220px; margin: -5px 0 10px 0;">
+                <option value="">Choose your store</option>
+            </select>
+        </div>
+    </div>
+</div>

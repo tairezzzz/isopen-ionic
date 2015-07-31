@@ -1,0 +1,23 @@
+<div ng-controller="SiteHeader" id="container1-itemview" class = "bar">
+    <div id="navigation1">
+        <ul>
+            <li>
+                <a ui-sref="grid({storeurl:$stateParams.storeurl})">
+                    <div class="back"></div>
+                </a>
+            </li>
+            <li>
+                <a ng-click="goToTop()" style="width: 70%; height: 38px">
+                    <img class="profile customheader-profile" ng-src="{{store.avatar_url|storeAvatar}}">
+                    <div class="header-title">{{store.store_name}}</div>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="profile">
+                    <div class="user"></div>
+                    <h4></h4>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
